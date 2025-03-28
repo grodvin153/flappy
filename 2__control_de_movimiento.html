@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>2 - Control de movimiento | Juego FlappyBird </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Iván Ruiz Mostazo" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<link rel="stylesheet" type="text/css" href="udl-content.css" />
+<script type="text/javascript" src="udl-content.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-3"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">Juego FlappyBird</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">FlappyBird</a></li>
+   <li><a href="introduccin.html" class="no-ch">Introducción</a></li>
+   <li><a href="1__elementos_de_juego.html" class="no-ch">1 - Elementos de juego</a></li>
+   <li id="active"><a href="2__control_de_movimiento.html" class="active no-ch">2 - Control de movimiento</a></li>
+   <li><a href="3__funcionamiento_de_juego.html" class="no-ch">3 - Funcionamiento de juego</a></li>
+   <li><a href="crditos.html" class="no-ch">Créditos</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="1__elementos_de_juego.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="3__funcionamiento_de_juego.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">2 - Control de movimiento</h1></header>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id7">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Movimiento de las tuberías</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta7_114_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Para mover las elementos tuberías, vamos a crear una variable <strong>SPEED</strong> a la que asignaremos un valor <strong>3</strong> (posición que cambiará la tubería de forma horizontal con cada ejecución del programa). Cuanto mayor sea este valor, más difícil será el juego.</p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>SPEED = 3                          # se crea una variable SPEED para la velocidad del juego con valor 3</code></pre>
+</div>
+</div></div></div></section><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>A continuación, vamos a definir una función <strong>update_pipes</strong> que usaremos para actualizar la posición de las tuberías.</p>
+<p>Dentro de esta función:</p>
+<ul>
+<li>Reduciremos la posición horizontal izquierda (<strong>left</strong>) de la tubería superior <strong>pipe_top</strong> según el valor indicado en la variable de velocidad <strong>SPEED</strong>.</li>
+<li>Reduciremos la posición horizontal izquierda (<strong>left</strong>) de la tubería inferior <strong>pipe_bottom</strong> según el valor indicado en la variable de velocidad <strong>SPEED</strong>.</li>
+<li>Si el lado derecho (<strong>right</strong>) de la tubería superior <strong>pipe_top</strong> <strong>es inferior a 0</strong>, significa que la tubería ha desaparecido por el lado izquierdo de la pantalla (podríamos usar igualmente la tubería inferior, ya que ambas tienen la misma posición horizontal).
+<ul>
+<li>Se reinician las posiciones de las tuberías llamando a la función <strong>reset_pipes</strong> creada anteriormente.</li>
+</ul>
+</li>
+</ul></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def update_pipes():
+    pipe_top.left = pipe_top.left - SPEED         # se mueve la tubería superior con la velocidad SPEED
+    pipe_bottom.left = pipe_bottom.left - SPEED   # se mueve la tubería inferior con la velocidad SPEED
+    if pipe_top.right &lt; 0:            # Cuando la tubería supera el borde izquierdo se vuelve a reiniciar la posición en la derecha
+        reset_pipes()</code></pre>
+</div>
+</div>
+<p>También se puede utilizar esta otra forma de reducir la posición de pipe_top y pipe_bottom</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def update_pipes():
+    pipe_top.left -= SPEED
+    pipe_bottom.left -= SPEED
+    if pipe_top.right &lt; 0:
+        reset_pipes()</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice em_iDevice_udl_rep_destacado" id="id8">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Sentencia condicional</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta8_115_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-representation"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Observa que en el código anterior hemos utilizado una sentencia condicional <strong>if-else</strong>. Una sentencia if consiste en:</p>
+<ul>
+<li>La palabra reservada if , da inicio al condicional if.</li>
+<li>La siguiente parte es la condición. Esta puede evaluar si la declaración es verdadera o falsa. En Python estas son definidas por las palabras reservadas (True or False).&nbsp;</li>
+<li>Paréntesis (()) Los paréntesis son opcionales, no obstante, ayudan a mejorar la legibilidad del código cuando más de una condición está presente.<br>Dos puntos : cuya función es separar la condición de la declaración de ejecución siguiente.</li>
+<li>Una nueva línea. Un nivel de indentación de cuatro espacios, que es una convención en Python. El nivel de indentación es asociado con la estructura de la declaración que sigue.</li>
+<li>Finalmente, la estructura de la sentencia. Este es el código que será ejecutado, únicamente si la sentencia a ser evaluada es verdadera. Es posible tener múltiples líneas en la estructura de código que pueden ser ejecutadas; en este caso es necesario tener cautela en cuanto a que todas las líneas tengan el mismo nivel de indentación.</li>
+</ul>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>if condicion:
+    ejecutar codigo si la condicion es True
+else:
+     ejecutar codigo si la condicion es False
+
+</code></pre>
+</div>
+</div>
+<p>Cuando la expresión <strong>if</strong> se evalúa como <em>True</em>, entonces ejecuta el código que le sigue. Pero si se evalúa como <em>False</em>, entonces ejecuta el código que sigue después de la sentencia <strong>else</strong> .</p>
+<p>La sentencia <strong>else</strong> está escrito en una nueva línea, posterior a la última línea del código desplazado a la derecha y en la misma posición de la condición <strong>if</strong>. Una sentencia <strong>else</strong> siempre tiene como prerrequisito una sentencia <strong>if</strong>, siendo a la vez, parte de él.</p>
+<p>El código posterior a la sentencia condicional <strong>else</strong> se ejecuta sí y solo sí la primera parte, del condicional <strong>if</strong> se evalúa como <em>False</em>. Si tu sentencia en la condicional <strong>if</strong> se evalúa como <em>True</em>, será ese bloque de código el que se ejecutará y el código que sigue a <strong>else</strong> no se ejecutará nunca.</p></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id9">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Movimiento del pájaro</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta9_116_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>En primer lugar vamos a definir el estado inicial del personaje <strong>bird</strong>:</p>
+<ul>
+<li>No está muerto, por lo que el atributo <strong>dead</strong> tiene valor <strong>false </strong>(esta información la utilizaremos más adelante).</li>
+<li>La velocidad vertical (<strong>vy</strong>) tiene valor <strong>0</strong>. Este valor lo utilizaremos más adelante para definir la gravedad que tendrá el pájaro en su caída al suelo.</li>
+</ul></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>bird.dead = False
+bird.vy = 0
+</code></pre>
+</div>
+</div></div></div></section><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Creamos una variable para la definición de la gravedad <strong>GRAVITY</strong> con valor <strong>0.3</strong>. Al igual que con la variable SPEED, a mayor valor de gravedad, más dificultad tendrá el juego.<strong></strong></p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>GRAVITY = 0.3</code></pre>
+</div>
+</div></div></div></section><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>A continuación vamos a definir una función <strong>update_bird</strong> para manejar el movimiento del pájaro:</p>
+<ul>
+<li>El pájaro tiene una velocidad vertical (<strong>vy</strong>) del valor definido en <strong>GRAVITY</strong>.</li>
+<li>La posición vertical <strong>y</strong> del pájaro se ve incrementa según la velocidad vertical <strong>vy.</strong> Al tener un valor positivo, la posición vertical es cada vez mayor, por lo que significa que el pájaro cae.</li>
+<li>La posición horizontal del pájaro <strong>x</strong> se mantiene en <strong>75</strong>.</li>
+</ul></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def update_bird():
+    bird.vy += GRAVITY      # asignamos la velocidad vertical del pájaro al valor de la gravedad
+    bird.y += bird.vy       # la posición vertical del pájaro aumenta (cae) según el valor de la velocidad vertical
+    bird.x = 75             # la posición horizontal del pájaro se mantiene a 75</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id11">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Actualización de la posición de tuberías y pájaro</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta11_113_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Una vez definidas las funciones update_pipe y update_bird, éstas deben ser llamadas de forma continua durante toda la ejecución del juego.</p>
+<p>Para ello, vamos a definir y utilizar otra de las funciones reservadas de Pygame para la actualización del juego llamada <strong>update</strong>.</p>
+<p>Dentro de esta función se llama a las funciones <strong>update_pipe</strong> y <strong>update_bird</strong>.</p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def update():              # procedimiento estándar de actualización
+   update_pipes()               # se actualizan las tuberías
+   update_bird()                # se actualiza el actor "bird"</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Reconocimiento Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="1__elementos_de_juego.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="3__funcionamiento_de_juego.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_intef_js.js"></script></body></html>

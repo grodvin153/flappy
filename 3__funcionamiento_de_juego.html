@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>3 - Funcionamiento de juego | Juego FlappyBird </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Iván Ruiz Mostazo" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<link rel="stylesheet" type="text/css" href="udl-content.css" />
+<script type="text/javascript" src="udl-content.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-4"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">Juego FlappyBird</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">FlappyBird</a></li>
+   <li><a href="introduccin.html" class="no-ch">Introducción</a></li>
+   <li><a href="1__elementos_de_juego.html" class="no-ch">1 - Elementos de juego</a></li>
+   <li><a href="2__control_de_movimiento.html" class="no-ch">2 - Control de movimiento</a></li>
+   <li id="active"><a href="3__funcionamiento_de_juego.html" class="active no-ch">3 - Funcionamiento de juego</a></li>
+   <li><a href="crditos.html" class="no-ch">Créditos</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="2__control_de_movimiento.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="crditos.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">3 - Funcionamiento de juego</h1></header>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id12">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Movimiento ascendente del pájaro</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta12_114_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Por último, vamos a añadir el movimiento ascendente del pájaro. Este movimiento se producirá con la pulsación de cualquier tecla del teclado.</p>
+<p>Para ello, en primer lugar vamos a definir el valor de vuelo que tendrá el pájaro con la variable <strong>FLAP_VELOCITY</strong>. Esta variable tendrá valor <strong>-6.5</strong>.</p>
+<p>El valor negativo, supondrá una ascensión en el movimiento vertical.</p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>FLAP_VELOCITY = -6.5</code></pre>
+</div>
+</div></div></div></section><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>A continuación definimos la función <strong>on_key_down</strong>. Esta función está reservada en Pygame para cualquier pulsación de teclado.</p>
+<p>Dentro de la función se asigna el valor de la velocidad vertical <strong>vy</strong> al valor de la variable de aleteo <strong>FLAP_VELOCITY</strong>.</p>
+<p>No hace falta cambiar la posición vertical del pájaro, ya que esto se realizará al llamar a la función update_bird, algo que se produce de forma constante.</p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def on_key_down():
+    bird.vy = FLAP_VELOCITY</code></pre>
+</div>
+</div></div></div></section><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Vamos a hacer una pequeña condición al código anterior: el pájaro sólo vuela si está vivo. De esta forma controlamos el correcto funcionamiento del juego cuando ocurran colisiones.</p>
+<p>La condición a añadir sería si (<strong>if</strong>) no (<strong>not</strong>) está muerto (<strong>dead</strong>) el actor pájaro (<strong>bird</strong>).</p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Cambiamos el código</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def on_key_down():
+    bird.vy = FLAP_VELOCITY</code></pre>
+</div>
+</div>
+<p>Por este otro</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def on_key_down():
+    if not bird.dead:
+        bird.vy = FLAP_VELOCITY</code></pre>
+</div>
+</div>
+<p>Cuidado al añadir una nueva condición, ya que el código que va dentro de ella tiene que desplazarse a la derecha.</p></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id14">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Colisión de pájaro con tubería</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta14_116_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>A continuación vamos a controlar la colisión entre el pájaro y las tuberías, aprovechando el uso del atributo dead que tiene el actor bird.</p>
+<ul>
+<li>Dentro de la función <strong>update_bird</strong>:
+<ul>
+<li>añadimos la condición si (<strong>if</strong>) el pájaro está colisionando (<strong>colliderect</strong>) con la tubería superior (<strong>pipe_top</strong>) o (<strong>or</strong>) colisiona con la tubería inferior (<strong>pipe_bottom</strong>)
+<ul>
+<li>En caso que colisione, el valor de muerto (<strong>dead</strong>) se cambia a <strong>true</strong>.</li>
+<li>Cambiamos el aspecto del pájaro a la <strong>imagen</strong> <em>birddead.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Inicialmente tenemos la función update_bird</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def update_bird():
+    bird.vy += GRAVITY
+    bird.y += bird.vy
+    bird.x = 75</code></pre>
+</div>
+</div>
+<p>Añadimos el siguiente código:</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>    if bird.colliderect(pipe_top) or bird.colliderect(pipe_bottom):
+        bird.dead = True
+        bird.image = 'birddead'</code></pre>
+</div>
+</div></div></div></section><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Una vez el pájaro ha muerto, podemos reinicializar el juego, recuperando la posición inicial del pájaro, su imagen inicial y la reiniciando las posiciones de las tuberías.</p>
+<p>Para ello se añadirá el siguiente código:</p>
+<ul>
+<li>Una nueva condición que controle si la posición vertical del pájaro <strong>y</strong> está fuera de la ventana, esto es <strong>no está entre 0 y 720</strong>.
+<ul>
+<li>se reinicia la posición vertical del pájaro <strong>y</strong> a <strong>200</strong>.</li>
+<li>se "revive" al pájaro cambiando el valor <strong>dead</strong> a <strong>true</strong>.</li>
+<li>se reinicia la velocidad vertical <strong>vy</strong> a <strong>0</strong>, aunque inmediatamente sufrirá una nueva aceleración a causa de la gravedad.</li>
+<li>se reinicia la posición de las tuberías llamando a la función <strong>reset_pipe</strong>.</li>
+</ul>
+</li>
+</ul></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Tenemos la función update_bird con este código:</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def update_bird():
+    uy = bird.vy
+    bird.vy += GRAVITY
+    bird.y += bird.vy
+    bird.x = 75
+    if bird.colliderect(pipe_top) or bird.colliderect(pipe_bottom):
+        bird.dead = True
+        bird.image = 'birddead'
+</code></pre>
+</div>
+</div>
+<p>Y añadimos esta nueva condición</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>    if not 0 &lt; bird.y &lt; 720:
+        bird.y = 200
+        bird.dead = False
+        bird.vy = 0
+        reset_pipes()</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice em_iDevice_udl_rep_destacado" id="id18">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Operadores lógicos and, or, not</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta18_119_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-representation"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Al utilizar condiciones podemos aprovechar los operadores lógicos para construir sentencias más complejas y que abarquen condiciones más precisas o más amplias. Para ello contamos con los siguientes operadores:</p>
+<ul>
+<li>And (&amp;): devuelve true si todas las condiciones son ciertas</li>
+</ul>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>if (x &gt; 5) and  (x &lt; 10):  # sólo será válido para valores de x mayores a 5 y menores a 10</code></pre>
+</div>
+</div>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Or (|): devuelve true si al menos una de las condiciones es cierta</li>
+</ul>
+</li>
+</ul>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>if (x &lt; 5) and  (x &gt; 10):  # será válido para cualquier valor de x menor a 5 y también cualquier valor de x mayor a 10</code></pre>
+</div>
+</div>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Not (!): devuelve true si la condición no es cierta</li>
+</ul>
+</li>
+</ul>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>if not (x &gt; 5):  # será válido para valores de x menores o iguales a 5</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id16">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Efecto de movimiento del pájaro</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta16_117_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Para incluir un efecto de movimiento en el pájaro, cambiaremos su imagen según esté subiendo (vy&lt;-1) o cayendo (vy&gt;=0).</p>
+<ul>
+<li>Creamos una condición que compruebe que el pájaro <strong>no</strong> está muerto (<strong>dead</strong>). Así evitamos cambiar la imagen ya asignada de pájaro muerto.
+<ul>
+<li>Creamos una nueva condición (<strong>if</strong>), en la que si la velocidad vertical <strong>vy es menor que -1</strong> (está subiendo)
+<ul>
+<li>el pájaro tenga la imagen <em>bird2</em>.</li>
+</ul>
+</li>
+<li>En caso contrario (<strong>else</strong>), es decir la velocidad vertical es mayor o igual a 0 (está quieto o cayendo)
+<ul>
+<li>el pájaro tenga la imagen inicial <em>bird1</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Cambiamos el código de la función update_bird</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def update_bird():
+    bird.vy += GRAVITY
+    bird.y += bird.vy
+    bird.x = 75
+    if bird.colliderect(pipe_top) or bird.colliderect(pipe_bottom):
+        bird.dead = True
+        bird.image = 'birddead'
+    if not 0 &lt; bird.y &lt; 720:
+        bird.y = 200
+        bird.dead = False
+        bird.vy = 0
+        reset_pipes()</code></pre>
+</div>
+</div>
+<p>Añadiendo la siguiente condición</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>    if not bird.dead:
+        if bird.vy &lt; -1:
+            bird.image = 'bird2'
+        else:
+            bird.image = 'bird1'</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice em_iDevice_udl_rep_destacado" id="id17">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Condicionales anidados</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta17_118_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-representation"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Los condicionales, permiten escribir código en su interior y en realidad, nada de impide incluso al interior de un condicional, poner otros (u otros). A eso se le llama condiciones anidados, pues una estructura condicional dentro de otra. De hecho, puedes anidar cuantos condicionales requieras, aunque no se recomienda más de dos o tres niveles.</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>if z &gt; 8:
+  print("Es mayor que 8") 
+else:
+  if z &gt; 6:
+      print("Es mayor que 6 pero menor o igual que 8") 
+  else:
+      if z &gt; 5:
+          print("Es mayor que 5 pero menor o igual que 6") 
+      else:
+          print("Es menor o igual que 5") </code></pre>
+</div>
+</div>
+<p>Dentro de un condicional, puedes poner cualquier instrucción válida y eso incluye a cualquier tipo de condicional que necesites y el funcionamiento, sigue siendo el mismo. De hecho, Python tiene una instrucción llamada elif() que permite simplificar un if() que se encuentra al interior de un else en Python.</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>if z &gt; 8:
+  print("Es mayor que 8") 
+elif z &gt; 6:
+  print("Es mayor que 6 pero menor o igual que 8") 
+elif z &gt; 5:
+  print("Es mayor que 5 pero menor o igual que 6") 
+else:
+  print("Es menor o igual que 5") </code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Reconocimiento Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="2__control_de_movimiento.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="crditos.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_intef_js.js"></script></body></html>

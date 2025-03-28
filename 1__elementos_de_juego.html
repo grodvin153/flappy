@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="exe_highlighter.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>1 - Elementos de juego | Juego FlappyBird </title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Iván Ruiz Mostazo" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="exe_highlighter.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<link rel="stylesheet" type="text/css" href="udl-content.css" />
+<script type="text/javascript" src="udl-content.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="exe-web-site" id="exe-node-2"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">Juego FlappyBird</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">FlappyBird</a></li>
+   <li><a href="introduccin.html" class="no-ch">Introducción</a></li>
+   <li id="active"><a href="1__elementos_de_juego.html" class="active no-ch">1 - Elementos de juego</a></li>
+   <li><a href="2__control_de_movimiento.html" class="no-ch">2 - Control de movimiento</a></li>
+   <li><a href="3__funcionamiento_de_juego.html" class="no-ch">3 - Funcionamiento de juego</a></li>
+   <li><a href="crditos.html" class="no-ch">Créditos</a></li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="introduccin.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="2__control_de_movimiento.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">1 - Elementos de juego</h1></header>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id1">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Inicialización del juego</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta1_113_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>En primer lugar vamos a inicializar el juego:</p>
+<ul>
+<li>importando la librería pygame zero <strong>pgzrun.</strong></li>
+<li>añadiendo un título al juego, por ejemplo <strong>Flappy bird</strong>.</li>
+<li>añadiendo las dimensiones, <strong>700</strong> de alto (height) y <strong>400</strong> de ancho (width).</li>
+</ul></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python line-numbers">
+<div>
+<pre><code>import pgzrun
+
+TITLE = 'Flappy Bird'
+WIDTH = 400
+HEIGHT = 708</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id2">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Añadimos las imágenes</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta2_114_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Se van a añadir las siguientes imágenes:</p>
+<ul>
+<li>el protagonista del juego <strong>bird</strong>. La imagen que usaremos tiene el nombre <em>bird1</em>. Tendrá una posición inicial <strong>75</strong> (vertical) y <strong>200</strong> (horizontal).</li>
+<li>colocamos la tubería superior <strong>pipe_top</strong>. La imagen que usaremos tiene el nombre <em>top</em>.</li>
+<li>colocamos la tubería inferior <strong>pipe_bottom</strong>. La imagen que usaremos tiene el nombre <em>bottom</em>.</li>
+</ul>
+<p>Las tuberías superior e inferior se ubicarán de forma aleatoria más adelante.</p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>bird = Actor('bird1', (75, 200))
+pipe_top = Actor('top', anchor=('left', 'bottom'))
+pipe_bottom = Actor('bottom', anchor=('left', 'top'))</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice em_iDevice_udl_rep_destacado" id="id10">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Coordenadas x y en Pygame</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta10_112_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-representation"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>La posición de un objeto en la pantalla vendrá determinada por el valor X (horizontal) e Y (vertical). El centro de coordenadas está en la esquina superior izquierda</p>
+<p><img src="posicionxy.png" alt="Posición X e Y" title="Posición X e Y" style="display: block; margin-left: auto; margin-right: auto;" width="310" height="196"></p></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id3">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Mostramos los actores y el fondo del juego</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta3_115_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>A continuación vamos a <strong>def</strong>inir y utilizar la función predefinida por la librería PygameZero con nombre <strong>draw()</strong>.</p>
+<p>Dentro de esta función:</p>
+<ul>
+<li>Crear el fondo de pantalla utilizando la función <strong>screen.blit</strong> e indicando el archivo de la imagen de fondo <em>background.</em></li>
+<li>Usar la función <strong>draw</strong> de los actores <em>bird</em>, <em>pipe_top</em>, <em>pipe_bottom</em> creados en el paso anterior.</li>
+</ul></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def draw():
+    screen.blit('background', (0, 0))
+    pipe_top.draw()
+    pipe_bottom.draw()
+    bird.draw()</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id4">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Asignamos posición aleatoria a las tuberías</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta4_116_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>En primer lugar hay que ímportar una nueva librería al juego llamada <strong>random</strong>.</p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code><span style="color: #999999;">import pgzrun</span>
+import random</code></pre>
+</div>
+</div></div></div></section><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>A continuación utilizamos el valor aleatorio para asignar la posición de las tuberías superior e inferior.</p>
+<p>Para ello definimos una función <strong>reset_pipes</strong> (el nombre puede ser otro). Dentro de esta función</p>
+<ul>
+<li>Establecemos una variable <strong>GAP</strong> con valor <strong>130</strong> que definirá el tamaño del hueco entre las dos tuberías.</li>
+<li>Creamos una posición aleatoria para el hueco, de esta forma la ubicación del hueco cambiará de unas tuberías a otras. El <strong>hueco</strong> tendrá una <strong>posición aleatoria</strong> entre <strong>200</strong> del margen superior y 200 del margen inferior (esto es <strong>200 menos la altura de la ventana</strong>).</li>
+<li>La altura de la tubería superior viene determinada por la posición establecida para el hueco. Para ello la <strong>posición vertical será la posición del hueco aleatoria menos el tamaño del hueco entre 2</strong> (porque nos quedamos con la parte superior de la ventana). Como queremos que aparezca en la derecha, <strong>la posición horizontal de la tubería será el ancho de la ventana</strong> (width).</li>
+<li>La altura de la tubería inferior viene determinada por la posición establecida para el hueco. Para ello <strong>la posición vertical será la posición del hueco aleatoria más el tamaño del hueco entre 2</strong> (porque nos quedamos con la parte inferior de la ventana). Como queremos que aparezca en la derecha, <strong>la posición horizontal de la tubería será el ancho de la ventana</strong> (width).</li>
+</ul></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>def reset_pipes():
+    GAP = 130         # tamaño fijo del hueco
+    pipe_gap_y = random.randint(200, HEIGHT - 200)  # posición aleatoria del hueco
+    pipe_top.pos = (WIDTH, pipe_gap_y - GAP // 2)      # posición de la tubería superior en el lado derecho
+    pipe_bottom.pos = (WIDTH, pipe_gap_y + GAP // 2) # posición de la tubería inferior en el lado derecho</code></pre>
+</div>
+</div>
+</div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id6">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Modificación para incrementar dificultad</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta6_113_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Una posible modificación para aumentar la dificultad del juego puede ser cambiar el tamaño del hueco de las tuberías <strong>GAP</strong>, del valor fijo de 130 a un <strong>valor aleatorio</strong> entre <strong>100</strong> y <strong>300</strong>.</p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Vamos a cambiar esta línea de código</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>    GAP = 130
+</code></pre>
+</div>
+</div>
+<p>Por esta otra</p>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>    GAP = random.randint(100,300)
+</code></pre>
+</div>
+</div></div></div></section><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>De esta forma en cada pasada, el tamaño del hueco y su posición serán diferentes. Podemos probar con diferentes valores para la función random, teniendo en cuenta que cuanto menor sean, menor será el espacio para pasar y más difícil será el juego.</p></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice em_iDevice_udl_rep_destacado" id="id19">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header"><h1 class="iDeviceTitle">Definición de funciones</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta19_120_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-representation"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>Una función te permite definir un bloque de código reutilizable que se puede ejecutar muchas veces dentro de tu programa. Las funciones te permiten crear código más modulares y reutilizable, consiguiendo reducir el número de líneas de código.</p>
+<p>Si bien Python ya proporciona muchas funciones integradas como print() y len(), también puedes definir tus propias funciones según necesites en tu código.</p>
+<p>En Python, una definición de función tiene las siguientes características:</p>
+<ul>
+<li>La palabra clave <strong>def</strong></li>
+<li>Un nombre de función</li>
+<li>Paréntesis <strong>()</strong>, y dentro de los paréntesis los parámetros de entrada, aunque los parámetros de entrada sean opcionales.</li>
+<li>Dos puntos <strong>:</strong></li>
+<li>Algún bloque de código para ejecutar</li>
+<li>Una sentencia de retorno (opcional)</li>
+</ul>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code># función sin parámetros o retorno de valores
+def diHola():
+  print("Hello!")
+
+diHola()  # llamada a la función, 'Hello!' se muestra en la consola
+</code></pre>
+</div>
+</div>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code># función con un parámetro
+def holaConNombre(name):
+  print("Hello " + name + "!")
+
+holaConNombre("Ada")  # llamada a la función, 'Hello Ada!' se muestra en la consola
+</code></pre>
+</div>
+</div>
+<div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code># función con múltiples parámetros con una sentencia de retorno
+def multiplica(val1, val2):
+  return val1 * val2
+
+multiplica(3, 5)  # muestra 15 en la consola</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper UDLcontentIdevice em_iDevice" id="id13">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">Ejecución del juego</h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta13_115_2" class="block iDevice_content">
+<div class="exe-udlContent exe-udlContent-expression"><section class="exe-udlContent-block"><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><p>La última línea del código debe ser la ejecución del programa (<strong>go</strong>) a través de la librería <strong>pgzrun</strong>.</p></div></div></section><section class="exe-udlContent-block js-hidden"><header class="exe-udlContent-header"><h2>ver código</h2></header><div class="exe-udlContent-content"><div class="exe-udlContent-content-main"><div class="highlighted-code code-style-2 language-python">
+<div>
+<pre><code>pgzrun.go()</code></pre>
+</div>
+</div></div></div></section></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Reconocimiento Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="introduccin.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="2__control_de_movimiento.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_intef_js.js"></script></body></html>
